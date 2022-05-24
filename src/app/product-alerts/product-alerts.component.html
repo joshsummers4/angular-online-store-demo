@@ -1,0 +1,6 @@
+<!-- notify me button that will appear if the product is priced over $700-->
+<p *ngIf="product && product.price > 700">
+  <!-- click property used with an event binding to call the notify.emit() method from the component-->
+  <button type="button"
+  (click)="notify.emit()">Notify Me</button>
+</p>

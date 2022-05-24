@@ -1,0 +1,36 @@
+<h2>Products</h2>
+<!-- the *ngFor creates a loop that will repeat the div block for eahc product in the list -->
+<div *ngFor="let product of products">
+  <h3>
+    <!-- this is an angular interpolation syntax which renders the value of the text from the product list (similar to handlebars)-->
+    <!--  router link added to allow the product name to be a link to the individual product page, the router contains the fixed elemetn products and the id property of the current product -->
+      <a 
+        [title]="product.name + ' details'"
+        [routerLink]="['/products', product.id]">
+        {{ product.name }}
+      </a>
+  </h3>
+
+  <!-- ngIf is used to check if there is a value of descripiton if so it will be rendered -->
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <!-- Share button which triggers an alret that states the product has been shared -->
+  <button type="button" (click)="share()">
+    Share
+  </button>
+
+  <!-- to display the notify me button add in the product alert as child of the product list and notfiy me method for when the nofiy button is clicked-->
+  <app-product-alerts 
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
